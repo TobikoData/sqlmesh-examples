@@ -2,7 +2,7 @@
 
 SQLMesh is a data transformation framework that brings the benefits of DevOps to data teams. It enables data scientists, analysts, and engineers to efficiently run and deploy data transformations written in SQL or Python.
 
-If you're new to SQLMesh, it may be helpful to walk through the quickstart guide before working with the SQLMesh example project.
+If you're new to SQLMesh, it may be helpful to walk through the [quickstart guide](https://sqlmesh.readthedocs.io/en/stable/quick_start/) before working with the SQLMesh example project.
 
 For more information, check out the [website](https://sqlmesh.com) and [documentation](https://sqlmesh.readthedocs.io/en/stable/).
 
