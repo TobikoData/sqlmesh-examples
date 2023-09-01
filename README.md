@@ -24,7 +24,7 @@ Using the example projects requires: cloning this Git repository and installing 
 
 To clone the repository, first ensure that Git is installed on your computer. Then, locate repo URL/SSH info in this section of the Github site by clicking the green `Code` button:
 
-![Github clone link](images/github-clone-link.png)
+![Github clone link](images/github-clone.png)
 
 In your command line interface (CLI), navigate to the folder where you want the `sqlmesh-examples` directory to be placed. Issue the `git clone <repo URL/SSH>` command to create a copy of the repo on your machine:
 
