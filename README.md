@@ -1,4 +1,4 @@
-![SQLMesh logo](sqlmesh.svg)
+![SQLMesh logo](images/sqlmesh.svg)
 
 SQLMesh is a data transformation framework that brings the benefits of DevOps to data teams. It enables data scientists, analysts, and engineers to efficiently run and deploy data transformations written in SQL or Python.
 
@@ -22,9 +22,9 @@ The functions can also add data to the database on demand, which is useful for s
 
 Using the example projects requires: cloning this Git repository and installing SQLMesh.
 
-To clone the repository, first ensure that Git is installed on your computer. Then, locate repo URL/SSH info in this section of the Github site:
+To clone the repository, first ensure that Git is installed on your computer. Then, locate repo URL/SSH info in this section of the Github site by clicking the green `Code` button:
 
-[SCREENSHOT]
+![Github clone link](images/github-clone-link.png)
 
 In your command line interface (CLI), navigate to the folder where you want the `sqlmesh-examples` directory to be placed. Issue the `git clone <repo URL/SSH>` command to create a copy of the repo on your machine:
 
