@@ -10,42 +10,44 @@ For more information, check out the [website](https://sqlmesh.com) and [document
 
 This repository contains standalone example SQLMesh projects for you to tinker with, test, and break. The examples vary in size and complexity, demonstrating different SQLMesh features and options.
 
-Each example directory contains a Jupyter notebook (`.ipynb` file) that walks through the project's contents and describes notable features. The notebook file is not necessary to run/use the example project and can be deleted.
+Each set of example projects contains a Jupyter notebook (`.ipynb` file) that walks through the project's contents and describes notable features. The notebook file is not necessary to run/use the example project and can be deleted. You can view the notebook in Github if you do not want to run it locally.
 
-SQLMesh projects require data to transform, and each project uses a local DuckDB database to store its data. The databases are not stored in the Github repository - the projects each contain a Python file with helper functions for creating the data.
+### Project data
 
-The functions can also add data to the database on demand, which is useful for simulating real-world scenarios where new data are ingested over time. Each helper file defines a command line interface, so the functions may be called from the CLI or by importing and calling them in Python (as the notebook files do).
+SQLMesh projects require data to transform, and each project uses a local DuckDB database to store its data. Each example contains a database with a small amount of data so the projects will run out of the box.
+
+The projects each contain a Python file with helper functions that add data to the database, which is useful for simulating real-world scenarios where new data are ingested over time. Each helper file defines a command line interface, so the functions may be called from the CLI or by importing and calling them in Python (as the notebook files do).
 
 ## How to use this repository
 
+Running the examples requires three steps:
+
+1. Clone/download this git repository
+2. Install SQLMesh
+3. Execute the projects
+
 ### Setup
 
-Using the example projects requires: cloning this Git repository and installing SQLMesh.
+Running the example projects requires cloning this Git repository and installing Python libraries.
 
-To clone the repository, first ensure that Git is installed on your computer. Then, locate repo URL/SSH info in this section of the Github site by clicking the green `Code` button:
+To clone the repository, first ensure that Git is installed on your computer. In your command line interface (CLI), navigate to the folder where you want the `sqlmesh-examples` directory to be placed. Issue the `git clone https://github.com/TobikoData/sqlmesh-examples.git` command to create a copy of the repo on your machine:
 
-![Github clone link](images/github-clone.png)
+![Clone repo in CLI](images/github-clone-cli.png)
 
-In your command line interface (CLI), navigate to the folder where you want the `sqlmesh-examples` directory to be placed. Issue the `git clone <repo URL/SSH>` command to create a copy of the repo on your machine:
+Next, navigate to the `sqlmesh-examples` directory in your CLI. We recommend creating a Python virtual environment with the command `python3 -m venv .venv`, then activating it with the command `source .venv/bin/activate`:
 
-[SCREENSHOT]
+![Create and use virtual environment](images/venv.png)
 
-Next, navigate to the `sqlmesh-examples` directory in your CLI. We recommend creating a Python virtual environment with the command `python -m venv .venv`, then activating it with the command `source .venv/bin/activate`:
+Running the examples requires a few different Python libraries:
+- SQLMesh (including web UI dependencies if you want to use the graphical interface) [required to do anything]
+- Jupyter notebooks [required to run example notebooks]
 
-[SCREENSHOT]
+Install all the libraries with the command `pip install "sqlmesh[web]" notebook`.
 
-Install SQLMesh using `pip` with the command `pip install sqlmesh`. If you want to use the browser UI, include the extra dependencies with `pip install "sqlmesh[web]"`:
-
-[SCREENSHOT]
-
-If you want to use the Jupyter notebook walkthroughs, install Jupyter with the command `pip install notebook`:
-
-[SCREENSHOT]
-
-Navigate to the directory for one of the projects, and you are ready to go!
+Navigate to the directory for one of the example projects, and you are ready to go!
 
 ### Explore SQLMesh
 
-After navigating to a project directory, you can open the project in the SQLMesh user interface with the `sqlmesh ui` command, work from the CLI with commands like `sqlmesh plan`, or open the notebook by issuing the `jupyter notebook` command and opening the notebook in your browser.
+After navigating to a project directory, you can open the project in the SQLMesh user interface with the `sqlmesh ui` command, work from the CLI with commands like `sqlmesh plan`, or open the notebook by issuing the `jupyter notebook` command and working through the notebook in your browser. (Alternatively, VSCode and some other IDEs have the ability to run Jupyter notebooks natively.)
 
 Have fun!
