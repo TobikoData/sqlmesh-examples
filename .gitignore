@@ -72,7 +72,6 @@ instance/
 target/
 
 # Jupyter Notebook
-*.ipynb
 .ipynb_checkpoints
 
 # IPython
