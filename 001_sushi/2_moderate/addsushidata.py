@@ -72,7 +72,7 @@ def iter_dates(start: datetime, end: datetime) -> t.Generator[datetime, None, No
 
 def add_raw_data(
     start: str,
-    end: str,
+    end: str = None,
     reset: bool = False,
     customers: list[int] = CUSTOMERS,
     waiters: list[int] = WAITERS,
@@ -93,11 +93,12 @@ def add_raw_data(
     Generate raw data and add it to the example DuckDB database.
     """
     start_dt = to_datetime(start)
-    end_dt = to_datetime(end)
+    end_dt = to_datetime(end) if end else start_dt
 
     db_path.parent.mkdir(exist_ok=True)
     if reset:
         db_path.unlink(missing_ok=True)
+        Path(db_path.name + ".wal").unlink(missing_ok=True)
 
     with duckdb.connect(str(db_path)) as con:
         con.sql(f"CREATE SCHEMA IF NOT EXISTS {raw_schema}")
@@ -146,7 +147,7 @@ def add_orders_data(
 ) -> None:
     """Generate sushi orders data and add it to the example DuckDB database."""
     db_con.sql(
-        f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, customer_id int, waiter_id int, start_ts int, end_ts int, ds text)"
+        f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, customer_id int, waiter_id int, start_ts int, end_ts int, ds date)"
     )
 
     dfs = []
@@ -207,7 +208,7 @@ def add_items_data(
     out_tbl: str,
 ) -> None:
     """Generate sushi items data and add it to the example DuckDB database."""
-    db_con.sql(f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, name text, price double, ds text)")
+    db_con.sql(f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, name text, price double, ds date)")
 
     existing_item_ds = (
         db_con.sql(
@@ -256,7 +257,7 @@ def add_order_items_data(
 ) -> None:
     """Generate raw order items data and add it to the example DuckDB database. Requires orders and items tables to exist."""
     db_con.sql(
-        f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, order_id int, item_id int, quantity int, ds text)"
+        f"CREATE TABLE IF NOT EXISTS {out_tbl} (id int, order_id int, item_id int, quantity int, ds date)"
     )
 
     dfs = []
@@ -369,7 +370,7 @@ def create_customer_data(
                 {
                     "name": customers,
                     "status": random.sample(
-                        [str(zip) for zip in range(10000, 10050)], k=len(customers)
+                        [str(zip) for zip in range(10000, 11000)], k=len(customers),
                     ),
                 }
             )
@@ -383,6 +384,10 @@ def create_customer_data(
         db_con.sql(f"INSERT INTO {raw_schema}.{demographics_tbl} SELECT * FROM demographics_df")
 
     return None
+
+def print_file(path: str):
+    with open(path, 'r') as file:
+        print(file.read())
 
 
 def parse_arguments() -> dict[str, str]:

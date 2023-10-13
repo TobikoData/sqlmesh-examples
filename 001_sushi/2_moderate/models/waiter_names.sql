@@ -1,4 +1,6 @@
--- Seed data containing water names.
+/*
+  Seed data containing water names.
+*/
 MODEL (
   name sushimoderate.waiter_names,
   kind SEED (
@@ -8,5 +10,5 @@ MODEL (
     id INT,
     name TEXT
   ),
-  grain id
-)
+  grain "id as waiter_id"
+);
