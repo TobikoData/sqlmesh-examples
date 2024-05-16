@@ -1,2 +1,2 @@
 ibis-framework[duckdb]
-'sqlmesh[web]'
+sqlmesh[web]
